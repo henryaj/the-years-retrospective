@@ -6,6 +6,16 @@ Where the journal and the calendar disagree, the skill trusts the calendar: jour
 
 ## Install
 
+**Claude Code** — clone straight into the skills directory; it auto-loads next session:
+
+```bash
+git clone https://github.com/henryaj/the-years-retrospective ~/.claude/skills/the-years-retrospective
+```
+
+(Use `<project>/.claude/skills/` instead for project scope; `git pull` to update.)
+
+**Skills CLI** (cross-agent):
+
 ```bash
 npx skills add henryaj/the-years-retrospective --agent claude-code
 ```
