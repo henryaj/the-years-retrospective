@@ -1,5 +1,5 @@
 ---
-name: retrospective
+name: the-years-retrospective
 description: Use when the user asks for a multi-year retrospective, life review, "the years," a year(s)-in-review document, an annual letter, or any synthesis spanning long stretches of a personal journal/diary and calendar history.
 ---
 
