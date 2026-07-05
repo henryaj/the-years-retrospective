@@ -11,7 +11,7 @@ The register, structure, and rules of the final document come from the user's in
 
 ## Before spawning anything
 
-1. Gather corpus caveats: check memory/project notes for known data traps (OCR dating errors, duplicate imports, stub files, where the real content actually lives, a people glossary). If none exist, build them by inspection — sample files, check frontmatter, count words — and save what you learn for next time. Feed the relevant caveats into every agent prompt.
+1. Gather corpus caveats: check memory/project notes for known data traps (OCR dating errors, duplicate imports, stub files, where the real content actually lives, a people glossary). If none exist, build them by inspection — sample files, check frontmatter, count words — and save what you learn for next time (to the auto-memory directory or project notes, never into the corpus itself). Feed the relevant caveats into every agent prompt.
 2. Scope coverage: list journal files grouped by year, with word counts per year. Years with low volume (roughly <5k words; prorate for partial years) are **journal-thin**: their agents must be told "calendar is your primary source; reconstruct behaviorally; don't apologize for the gap." The current year's window ends today.
 3. List calendars once; pass explicit calendar IDs to agents. Primary always; when unsure whether a secondary calendar (social imports, work) reaches a given year, pass it anyway — a zero-event result is itself evidence.
 
@@ -31,9 +31,9 @@ Background agents finish and go **idle without sending anything**; the idle noti
 ## Synthesis (main context, not a subagent)
 
 - Reconcile cross-year conflicts before writing; prefer the agent with more/denser evidence.
-- **Verify quotes before publishing**: grep the ~20 most load-bearing quoted phrases against the journal sources. Every quote in the document carries a date.
+- **Verify quotes before publishing**: grep the ~20 most load-bearing quoted phrases against all quotable sources — journal, daily notes, voice-memo transcripts. Every quote in the document carries a date.
 - Characterological claims need behavioral (calendar) support, not just journal narration; claims resting on a single entry don't ship.
-- If the spec makes psychological or arc-shaped claims (growth, comebacks, patterns): growth-frame gate — an arc without demonstrated movement in the record doesn't ship (route it to a companion doc if one exists); ration interpretations to 1–2 per year chapter; absences are questions, never findings.
+- If the spec makes psychological or arc-shaped claims (growth, comebacks, patterns): growth-frame gate — an arc without demonstrated movement in the record doesn't ship (route it to a companion doc if one exists, otherwise cut it); ration interpretations to 1–2 per year chapter; absences are questions, never findings.
 
 ## Publishing
 
@@ -47,5 +47,5 @@ If a design/artifact skill is available, load it; give the document its own visu
 | Duplicate OCR runs of same pages | Read one of each pair (record pairs in the corpus caveats) |
 | Stale orchestrator priming | Agents instructed to trust their own evidence and flag conflicts |
 | Agent idle, no brief | SendMessage demanding the brief as a message |
-| Events while abroad | Render in the calendar's home timezone; dates can shift a day — tell agents to infer abroad-periods from flights |
+| Events while abroad | Render in the calendar's home timezone (read it from `list_calendars`; state it in agent prompts); dates can shift a day — tell agents to infer abroad-periods from flights |
 | Quiet journal stretch read as decline | Often the person was demonstrably active — check calendar density first |
